@@ -1,0 +1,8 @@
+<header>
+  <ul>
+    <li id="all" (click)="onClick($event)" [class.active]="currentTab() === ''">전체</li>
+    <li id="koala" (click)="onClick($event)" [class.active]="currentTab() === 'koala'">코알라</li>
+    <li id="penguin" (click)="onClick($event)" [class.active]="currentTab() === 'penguin'">펭귄</li>
+    <li id="panda" (click)="onClick($event)" [class.active]="currentTab() === 'panda'">판다</li>
+  </ul>
+</header>
