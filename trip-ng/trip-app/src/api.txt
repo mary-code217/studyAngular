@@ -1,0 +1,30 @@
+api url
+https://trip-wiki-api.vercel.app/
+
+api example
+https://trip-wiki-api.vercel.app/Asia?start=0/sort=cost
+
+api search example
+https://trip-wiki-api.vercel.app/?search=seoul
+https://trip-wiki-api.vercel.app/?search=korea
+
+
+city detail example
+https://trip-wiki-api.vercel.app/city/6
+
+model
+tirp
+-> CityInfo, City, Cities
+
+service
+api 호출 서비스
+search 서비스
+정렬 서비스
+지역 탭 필터 서비스
+city detail 서비스
+이걸 전부 조합하는 서비스
+
+컴포넌트 구성
+헤더 - 정렬, 서치
+메인 - 탭, 리스트
+디테일 - 그래프
