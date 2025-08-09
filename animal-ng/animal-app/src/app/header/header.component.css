@@ -1,31 +1,36 @@
 header {
-    margin-top: 60px;
+  margin-top: 60px;
+}
+
+li {
+  list-style: none;
 }
 
 header ul {
-    font-size: 40px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    width: 100%;
+  font-size: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 100%;
 }
 
 header ul li {
-    width: 20%;
-    padding: 20px 15px;
-    background: grey;
-    color: #ffffff;
-    transition: all 0.3s;
+  width: 23%;
+  padding: 20px 15px;
+  background: grey;
+  color: #ffffff;
+  transition: all 0.3s;
+  border: 1px solid #ddd;
 }
 
 header ul li:hover {
-    background: #ffffff;
-    color: #000000;
-    cursor: pointer;
+  background: #ffffff;
+  color: #000000;
+  cursor: pointer;
 }
 
 header ul li.active {
-    background: #ffffff;
-    color: #000000;
+  background: #ffffff;
+  color: #000000;
 }

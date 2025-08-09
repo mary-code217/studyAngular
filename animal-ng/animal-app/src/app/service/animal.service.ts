@@ -3,7 +3,6 @@ import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
 import { PhotoResponse, Photo } from '../model/photo.model';
 
-
 @Injectable({ providedIn: 'root' })
 export class AnimalService {
   private http = inject(HttpClient);
@@ -21,11 +20,9 @@ export class AnimalService {
       next: (res) => this.photos.set(res.photos),
       error: (err) => console.error('API 호출 실패', err),
     });
-
-    console.log(this.photos);
   }
 
-  getPhotos(tab:string) {
+  getPhotos(tab: string) {
     const url = `${this.API_URL}${tab}`;
 
     this.http.get<PhotoResponse>(url).subscribe({
@@ -38,4 +35,3 @@ export class AnimalService {
     this.tabName.set(name);
   }
 }
-

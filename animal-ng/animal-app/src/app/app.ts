@@ -7,8 +7,6 @@ import { ContentComponent } from './content/content.component';
   selector: 'app-root',
   imports: [RouterOutlet, HeaderComponent, ContentComponent],
   templateUrl: './app.html',
-  styleUrl: './app.css'
+  styleUrl: './app.css',
 })
-export class App {
-
-}
+export class App {}
