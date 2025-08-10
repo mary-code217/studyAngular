@@ -1,22 +1,22 @@
 import { Component, inject } from '@angular/core';
-import { AnimalService } from '../service/animal.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, RouterLink, RouterLinkActive } from '@angular/router';
+import { toSignal } from '@angular/core/rxjs-interop';
+import { distinctUntilChanged, map } from 'rxjs';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.css']
+  styleUrls: ['./header.component.css'],
+  imports: [RouterLink, RouterLinkActive],
 })
 export class HeaderComponent {
-  private animalService = inject(AnimalService);
-  private router = inject(Router);
+  private route = inject(ActivatedRoute);
 
-  currentTab = this.animalService.tabName;
-
-  onClick(event:Event) {
-    const id = (event.target as HTMLElement).id;
-    this.animalService.setTabName(id === "all" ? "" : id);
-    // this.router.navigate([`/${id === "all" ? "" : id}`]);
-    this.router.navigate([`/${id}`]);
-  }
+  currentTab = toSignal(
+    this.route.paramMap.pipe(
+      map((p) => (p.get('category') === 'all' ? '' : p.get('category')) ?? ''),
+      distinctUntilChanged()
+    ),
+    { initialValue: '' }
+  );
 }
