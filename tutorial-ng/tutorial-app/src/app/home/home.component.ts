@@ -42,6 +42,7 @@ export class HomeComponent {
     return q ? list.filter((h) => h.city.toLowerCase().includes(q)) : list;
   });
 
+  // 생성자를 통해서 원본 리스트에 api리스트 담아주기
   constructor() {
     this.housingService
       .getAllHousingLocations()

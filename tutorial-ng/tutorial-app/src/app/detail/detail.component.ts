@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { ChangeDetectorRef, Component, inject, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { HousingLocationInfo } from '../housinglocation';
 import { HousingService } from '../housing.service';
@@ -10,23 +10,23 @@ import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
   styleUrls: ['./detail.component.css'],
   imports: [ReactiveFormsModule],
 })
-export class DetailComponent {
+export class DetailComponent implements OnInit{
   route: ActivatedRoute = inject(ActivatedRoute);
-  housingLocation: HousingLocationInfo | undefined;
+  housingLocation?: HousingLocationInfo;
   housingService = inject(HousingService);
+  private cdr = inject(ChangeDetectorRef);
+
   applyForm = new FormGroup({
     firstName: new FormControl(''),
     lastName: new FormControl(''),
     email: new FormControl(''),
   });
 
-  constructor() {
-    const housingLocationId = parseInt(this.route.snapshot.params['id'], 10);
-    this.housingService
-      .getHousingLocationById(housingLocationId)
-      .then((housingLocation) => {
-        this.housingLocation = housingLocation;
-      });
+  async ngOnInit(): Promise<void> {
+    const housingLocationId = Number(this.route.snapshot.paramMap.get('id'));
+    this.housingLocation = await this.housingService.getHousingLocationById(housingLocationId);
+
+    this.cdr.markForCheck();
   }
 
   submitApplication() {

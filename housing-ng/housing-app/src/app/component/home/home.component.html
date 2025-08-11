@@ -1,0 +1,23 @@
+<section>
+  <form (ngSubmit)="onSearch()">
+    <input
+      name="q" 
+      [(ngModel)]="q"
+      type="search"
+      placeholder="Filter by city"
+    />
+    <button type="submit" class="primary">Search</button>
+  </form>
+</section>
+
+<!-- <section class="results">
+  @for (idx of housingLocationList(); track $index) {
+  <app-housingLocation [housingLocation]="idx"></app-housingLocation>
+  }
+</section> -->
+
+<section class="results">
+  @for (idx of housingService.housingFilterList(); track $index) {
+  <app-housingLocation [housingLocation]="idx"></app-housingLocation>
+  }
+</section>
