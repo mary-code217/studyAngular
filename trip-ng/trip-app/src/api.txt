@@ -5,7 +5,7 @@ api example
 https://trip-wiki-api.vercel.app/Asia?start=0/sort=cost
 
 api search example
-https://trip-wiki-api.vercel.app/?search=seoul
+
 https://trip-wiki-api.vercel.app/?search=korea
 
 

@@ -11,16 +11,14 @@ export class HousingService{
   housingLocationList = signal<HousingLocationInfo[]>([]);
   housingLocation = signal<HousingLocationInfo|undefined>(undefined);
 
-  query = signal<String>("");
+  query = signal<string>("");
 
   housingFilterList = computed(() => {
     const q = this.query().toLowerCase().trim();
     const list = this.housingLocationList();
     if(!q) {
-      console.log("1");
       return list;
     }
-    console.log("2");
     return list.filter(i => (i.city ?? '').toLowerCase().includes(q));
   })
 
@@ -45,6 +43,4 @@ export class HousingService{
   submitApplication(firstName:string, lastName:string, email:string) {
     console.log(`name : ${firstName}${lastName}, email : ${email}`);
   }
-
-
 }

@@ -1,23 +1,23 @@
 <section>
-  <form (ngSubmit)="onSearch()">
+  <form (ngSubmit)="onSearch(q.value)">
     <input
-      name="q" 
-      [(ngModel)]="q"
+      #q
+      name="q"
+      [ngModel]="facade.qFromUrl()"
       type="search"
       placeholder="Filter by city"
+      aria-label="Search by city"
     />
     <button type="submit" class="primary">Search</button>
   </form>
 </section>
 
-<!-- <section class="results">
-  @for (idx of housingLocationList(); track $index) {
-  <app-housingLocation [housingLocation]="idx"></app-housingLocation>
-  }
-</section> -->
-
 <section class="results">
-  @for (idx of housingService.housingFilterList(); track $index) {
-  <app-housingLocation [housingLocation]="idx"></app-housingLocation>
+  @if (facade.filterList().length === 0) {
+    <p>검색 결과가 없어요.</p>
+  } @else {
+    @for (loc of facade.filterList(); track loc.id) {
+      <app-housingLocation [housingLocation]="loc"></app-housingLocation>
+    }
   }
 </section>

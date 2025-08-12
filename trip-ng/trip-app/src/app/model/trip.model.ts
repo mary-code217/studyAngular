@@ -9,6 +9,7 @@ export interface CityInfo {
 
 export interface City {
     id:number;
+    total:string;
     region:string;
     city:string;
     country:string;
